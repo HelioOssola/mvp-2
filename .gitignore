@@ -1,0 +1,25 @@
+# Ambientes virtuais
+venv/
+env/
+.venv/
+
+# Cache do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Banco SQLite local (quando não estiver usando volume)
+api_principal/mvp2.db
+
+# Arquivos temporários e logs
+*.log
+*.tmp
+
+# Configurações locais do VSCode e sistema
+.vscode/
+.idea/
+.DS_Store
+
+# Pastas de build do Docker (não necessárias para versionar)
+**/__pycache__/

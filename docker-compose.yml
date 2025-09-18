@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  api_secundaria:
+    container_name: mvp2-api-secundaria
+    build: ./api_secundaria
+    ports:
+      - "5001:5001"
+    restart: unless-stopped
+
+  api_principal:
+    container_name: mvp2-api-principal
+    build: ./api_principal
+    # a API Principal falará com a Secundária pelo nome do serviço (DNS interno do Docker)
+    environment:
+      - API_SECUNDARIA_URL=http://mvp2-api-secundaria:5001
+      # persistência do SQLite fora do container (em volume)
+      - DB_PATH=/data/mvp2.db
+    depends_on:
+      - api_secundaria
+    ports:
+      - "5000:5000"
+    volumes:
+      - principal_db:/data
+    restart: unless-stopped
+
+volumes:
+  principal_db:
