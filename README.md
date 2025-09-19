@@ -41,6 +41,8 @@ mvp-2/
 │   ├── app.py
 │   ├── Dockerfile
 │   └── requirements.txt
+├── docs
+│   └── Arquitetura.png
 ├── docker-compose.yml
 └── README.md
 ```
